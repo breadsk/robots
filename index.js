@@ -3,15 +3,11 @@ const express = require("express");
 const app = express();
 const port = 3001;
 
-const { robots } = require("./robots");
+const { getRobots , getRobotsById } = require("./controllers/getRobots");
 
-app.get("/", ( req , res )=> {
+app.get("/", getRobots);
 
-    res.json({
-        robots:robots
-    });
-
-})
+app.get("/:id" , getRobotsById);
 
 app.listen(port,()=> {    
     console.log(`Conectado ok en el puerto: ${port}`);
